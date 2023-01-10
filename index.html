@@ -22,7 +22,53 @@
 
                 return textComputerChoice;
             }
-            alert(getComputerChoice());
+
+            function playRound(playerSelection, computerSelection) {
+                let localPlayerSelection = playerSelection.toLowerCase();
+                let localcomputerSelection = computerSelection.toLowerCase();
+                let localGameReturn = "";
+
+                if(localPlayerSelection == "rock"){ // This is a terrible brute-force method, but it works well enough for now. Maybe clean up one day?
+                    if(localcomputerSelection == "rock"){
+                        localGameReturn = "It's a tie!";
+                    }else if(localcomputerSelection == "paper"){
+                        localGameReturn = "You Lose! " + localcomputerSelection + " beats " + localPlayerSelection;
+                    }else{
+                        localGameReturn = "You Win! " + localPlayerSelection + " beats " + localcomputerSelection;
+                    }
+                }else if(localPlayerSelection == "paper"){
+                    if(localcomputerSelection == "paper"){
+                        localGameReturn = "It's a tie!";
+                    }else if(localcomputerSelection == "scissors"){
+                        localGameReturn = "You Lose! " + localcomputerSelection + " beats " + localPlayerSelection;
+                    }else{
+                        localGameReturn = "You Win! " + localPlayerSelection + " beats " + localcomputerSelection;
+                    }
+
+                }else{ // This is Scissors.
+                    if(localcomputerSelection == "scissors"){
+                        localGameReturn = "It's a tie!";
+                    }else if(localcomputerSelection == "rock"){
+                        localGameReturn = "You Lose! " + localcomputerSelection + " beats " + localPlayerSelection;
+                    }else{
+                        localGameReturn = "You Win! " + localPlayerSelection + " beats " + localcomputerSelection;
+                    }
+                }
+
+                return localGameReturn;
+            }
+
+            function game(){
+                for (let i = 0; i < 5; i++) {
+                    const playerSelection = "rock";
+                    const computerSelection = getComputerChoice();
+
+                    alert(playRound(playerSelection, computerSelection));
+                }   
+            }
+
+            game();
+
         </script>
     </body>
 </html>
