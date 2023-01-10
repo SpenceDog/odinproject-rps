@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>The Odin Project Rock Paper Scissors</title>
+    </head>
+    <body>
+        <script>
+            function getComputerChoice(){ // Sets up the computer's choice.
+                let computerChoice = Math.floor(Math.random() * 3); // Gets a random value between 0 - 2.
+                let textComputerChoice = "";
+
+                if (computerChoice == 0){ // Depending on the response, it picks the choice.
+                    textComputerChoice = "Rock";
+                } else if (computerChoice == 1){
+                    textComputerChoice = "Paper";
+                } else{
+                    textComputerChoice = "Scissors";
+                }
+
+                return textComputerChoice;
+            }
+            alert(getComputerChoice());
+        </script>
+    </body>
+</html>
