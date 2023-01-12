@@ -4,12 +4,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <link rel="stylesheet" href="styles.css">
         <title>The Odin Project Rock Paper Scissors</title>
     </head>
     <body>
+        <h1>Rock, Paper, Scissors!</h1>
+        <div id="button-holder">
+            <ul>
+                <li><button id="rock-button">Rock</button></li>
+                <li><button id="paper-button">Paper</button></li>
+                <li><button id="scissors-button">Scissors</button></li>
+            </ul>
+        </div>
+        <h2>Score:</h2>
+        <h3 id="current-result"></h3>
+        <div id="score-container">
+            <div>
+                <h3>Player Wins:</h3>
+                <p id="player-score">0</p>
+            </div>
+            <div>
+                <h3>Computer Wins:</h3>
+                <p id="computer-score">0</p>
+            </div>
+        </div>
         <script src="rps.js"></script> 
         <script>
-            game();
+            var playerWins = 0; // Global variables used to judge the whole game.
+            var computerLose = 0;
+
+            document.getElementById("rock-button").addEventListener("click", rockFunction); // Adds our event listeners.
+            document.getElementById("paper-button").addEventListener("click", paperFunction);
+            document.getElementById("scissors-button").addEventListener("click", scissorsFunction);
         </script>
     </body>
 </html>

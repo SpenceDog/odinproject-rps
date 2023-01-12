@@ -48,34 +48,47 @@ function playRound(playerSelection, computerSelection) {
     return localGameReturn;
 }
 
-function game(){
-    let playerWins;
-    let computerLose;
+function game(passPlayer){
 
-    for (let i = 0; i < 5; i++) {
-        let playerSelection;
+    let playerSelection = passPlayer;
 
-        while(playerSelection !== "Rock" && playerSelection !== "Paper" && playerSelection !== "Scissors"){
-            playerSelection = prompt("Rock, Paper, or Scissors?")
-            
-        }
+    const computerSelection = getComputerChoice();
 
-        const computerSelection = getComputerChoice();
+    let gameResult = playRound(playerSelection, computerSelection);
 
-        let gameResult = playRound(playerSelection, computerSelection);
-
-        if (gameResult == "You Win!"){
-            playerWins++;
-        }else{
-            computerLose++;
-        }
-
-        alert(gameResult);
-    }   
-
-    if(playerWins > computerLose){
-        alert("Congrats! You Win!");
+    if (gameResult == "You Win!"){
+        playerWins++;
     }else{
-        alert("Sorry, You Lose!");
+        computerLose++;
+    }
+
+    document.getElementById('current-result').innerHTML = gameResult;  
+    document.getElementById('player-score').innerHTML = playerWins;
+    document.getElementById('computer-score').innerHTML = computerLose;
+
+    if(playerWins >= 5){
+        document.getElementById('current-result').innerHTML = "Congrats! You've Won The Game";  
+        document.getElementById("rock-button").removeEventListener("click", rockFunction);
+        document.getElementById("paper-button").removeEventListener("click", paperFunction); 
+        document.getElementById("scissors-button").removeEventListener("click", scissorsFunction);
+    }
+
+    if(computerLose >= 5){
+        document.getElementById('current-result').innerHTML = "Sorry! The Machines Win!"; 
+        document.getElementById("rock-button").removeEventListener("click", rockFunction);
+        document.getElementById("paper-button").removeEventListener("click", paperFunction); 
+        document.getElementById("scissors-button").removeEventListener("click", scissorsFunction);
     }
 }
+
+function rockFunction() { // Calls the game() function with different parameters.
+    game("Rock");
+} 
+    
+function paperFunction() {
+    game("Paper");
+} 
+     
+function scissorsFunction() {
+    game("Scissors");
+} 
